@@ -1,0 +1,96 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function preback(){window.history.forward();}
+            setTimeout("preback()",0);
+            window.onunload=function(){null};
+        </script>
+        <title>Home page</title>
+    <style>
+     body 
+       {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .topnav 
+        {
+        background-color: black;
+        }
+
+        .topnav a 
+        {
+        float: right;
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+        font-size: 17px;
+        }
+
+        .topnav a:hover 
+        {
+        background-color: whitesmoke;
+        color: black;
+        }
+
+        .topnav a.active 
+        {
+        background-color: red;
+        color: white;
+        }
+        .table
+        {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: blue;
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            
+        }
+      
+
+    </style>
+    </head>
+    <body style="background-image: url(images/img1.jpg);background-size: 1600px;">
+        <div class="topnav">
+            <a href="index.html" >Home</a>
+            
+            <a href="login.html" class="active" >Login</a>
+        </div>
+        <div class="table">
+            <form method="post" action="check.php" >
+                <table border="1"  cellspacing="5px" cellpadding="5%" style="color:red;">
+                <tr>
+                <th colspan="2">Login Here</th>
+                </tr>
+                <tr>
+                <th>
+                 <label >Username:</label><br>
+                </th>
+                <th>
+                <input type="text" style="width:300;padding:10px" id="nam" name="user" >
+                </th>
+                </tr>
+                <tr>
+                <th>
+                <label >Password:</label><br>
+                </th>
+                <th>
+                <input type="password" style="width:300;padding:10px" id="pas" name="pass" >
+                </th>
+                </tr>
+                <tr>
+                <th colspan="2">
+                <input type="submit"style="width:100;padding:10px;background-color:green;color:white;font-size:15px;" value="Login">
+                </th>
+                </tr>
+                </table>
+                <a style="color:red" class="sign" href="registration.php">Sign up?</a>
+              </form> 
+        </div>
+    </body>
+</html>
