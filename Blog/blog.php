@@ -45,6 +45,7 @@ if(isset($_SESSION['name']))
         color: white;
         }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
     history.pushState(null, null, location.href);
     history.back();
@@ -66,7 +67,51 @@ if(isset($_SESSION['name']))
 		}
 
 	</script>
+    <script>
+    $(document).ready(function() {
+        
+        $('[name="like1"]').on('click', function() {
+          
+        var id = this.id;
+       
+        $.ajax({
+        url: "like.php",
+        type: "POST",
+        data: {
+        id: id
+        },
 
+        cache: false,
+        success: function(response){
+            //alert(response);
+            $("#likel").html(response);
+            location.reload(true);
+       
+
+        
+}
+});
+
+});    
+
+/*$(window).load(function()
+{
+    $.ajax(
+        {
+            url: "loader.php",
+            type: "POST",
+            data:{
+                id: id
+            },
+            cache: false,
+            success: function(result){
+            $("#likel").html(result);
+            }
+        }
+    )
+})*/
+});
+    </script>
     </head>
     <form action="approv.php" method="POST" id="frmm" >
     <body style="background-image: url(images/img5.jpg);background-size: 1600px;">
@@ -78,7 +123,7 @@ if(isset($_SESSION['name']))
     </br>
     </br>
     </br>
-        <center><table border=1 width="70%" style="color:red">
+        <center><table class="iter" border=1 width="70%" style="color:red">
         <tr>
                 <th><h1> New Posts<h1></th>
                 </tr>
@@ -105,10 +150,10 @@ if(isset($_SESSION['name']))
                 </th>
                 </tr>
                 <tr>
-                <td class="text-center"><p>Like:' .$sql1.'</p><p>Dislike:' .$sql2.' </p></td></tr>
+                <td class="text-center"><p id="likel">Like:' .$sql1.'</p><p>Dislike:' .$sql2.' </p></td></tr>
                
                <tr>
-                <td class="text-center"><img src="images/like2.png" width="50" height="50" value="Like" id='.$row['Iid'].' onclick="update(this.id)" ><img src="images/dislike2.png" width="50" height="50" value="Dislike" id='.$row['Iid'].' onclick="update1(this.id)" ></td></tr>
+                <td class="iter"><img src="images/like2.png" name="like1" width="50" height="50" value="Like" id='.$da.'  ><img src="images/dislike2.png" width="50" height="50" value="Dislike" id='.$row['Iid'].' onclick="update1(this.id)" ></td></tr>
                 '
                 
                 ;

@@ -19,8 +19,13 @@ class FileController
         
         if ($result->num_rows > 0)  
         {
-            header("Location:blog.php");
+            $result1=mysqli_query($this->conn,"select count(Likes) as cnt from table_opinion where Likes='1' and Iid='$id'"); 
+            $data=mysqli_fetch_array($result1);
+            
+            echo'<p id="likel">Like:'. $data['cnt'].'</p>';
+            //header("Location:blog.php");
         }
+        
         else
         {
         
@@ -29,8 +34,10 @@ class FileController
             $result = $this->conn->query($fileQuery);
             if($result)
             {
-                
-                header("Location:blog.php");
+                $result1=mysqli_query($this->conn,"select count(Likes) as cnt from table_opinion where Likes='1' and Iid='$id'"); 
+                $data=mysqli_fetch_array($result1);
+                echo'<p id="likel">Like:'. $data['cnt'].'</p>';
+                //header("Location:blog.php");
             }
             else
             {
