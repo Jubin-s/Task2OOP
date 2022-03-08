@@ -85,7 +85,7 @@ if(isset($_SESSION['name']))
         success: function(response){
             //alert(response);
             $("#likel").html(response);
-            location.reload(true);
+            //location.reload(true);
        
 
         
@@ -149,11 +149,12 @@ if(isset($_SESSION['name']))
                 '
                 </th>
                 </tr>
+                
+               <tr>
+                <td class="iter"><img src="images/like2.png" name="like1" width="50" height="50" value="Like" id='.$da.'  ><img src="images/dislike2.png" width="50" height="50" value="Dislike" id='.$row['Iid'].' onclick="update1(this.id)" ></td></tr>
                 <tr>
                 <td class="text-center"><p id="likel">Like:' .$sql1.'</p><p>Dislike:' .$sql2.' </p></td></tr>
                
-               <tr>
-                <td class="iter"><img src="images/like2.png" name="like1" width="50" height="50" value="Like" id='.$da.'  ><img src="images/dislike2.png" width="50" height="50" value="Dislike" id='.$row['Iid'].' onclick="update1(this.id)" ></td></tr>
                 '
                 
                 ;
