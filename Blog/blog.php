@@ -70,10 +70,9 @@ if(isset($_SESSION['name']))
     <script>
     $(document).ready(function() {
         
-        $('[name="like1"]').on('click', function() {
-          
-        var id = this.id;
-       
+        $('.like1').on('click', function() {
+        var element = $(this);
+        var id= element.data("id");
         $.ajax({
         url: "like.php",
         type: "POST",
@@ -82,18 +81,43 @@ if(isset($_SESSION['name']))
         },
 
         cache: false,
-        success: function(response){
-            //alert(response);
-            $("#likel").html(response);
+        success: function(response)
+        {
+            //onSuccess(response)
+            
+            $("#like-count-" + id).html(response);
             //location.reload(true);
        
-
+           
         
-}
-});
+        }
+        });
 
-});    
-
+    });   
+    
+    // $('[name=like2]').on('click',function()
+    // {
+    //     var id1= $('[name="p2"]').attr("id");
+    //     var id = this.id;
+    //     $.ajax(
+    //         {
+    //             url: "dislike.php",
+    //             type: "POST",
+    //             data: {
+    //                 id:id
+    //             },
+    //             cache: false,
+    //             success: function(response)
+    //             {
+    //                 //alert(id);
+    //                 $("#dlike").html(response);
+    //                 //location.reload(true);
+    //             }
+    //         }
+    //     );
+    // }
+    // );
+   
 /*$(window).load(function()
 {
     $.ajax(
@@ -140,7 +164,7 @@ if(isset($_SESSION['name']))
                 echo'
                 
                 <tr>
-                <td class="text-center"><img width="1000" width="500" height="600" src="product-images/'.$row["Image"].'"</td>
+                <td class="text-center"><img width="1000" width="500" height="600" src="product-images/'.$row["Image"].'" /></td>
                
                 </tr>
                 <tr>
@@ -151,9 +175,9 @@ if(isset($_SESSION['name']))
                 </tr>
                 
                <tr>
-                <td class="iter"><img src="images/like2.png" name="like1" width="50" height="50" value="Like" id='.$da.'  ><img src="images/dislike2.png" width="50" height="50" value="Dislike" id='.$row['Iid'].' onclick="update1(this.id)" ></td></tr>
+                <td class="iter"><img src="images/like2.png" class="like1" width="50" height="50" value="Like" data-id="'.$da.'"  ><img src="images/dislike2.png" name="like2" width="50" height="50" value="Dislike" id="'.$row['Iid'].'"  ></td></tr>
                 <tr>
-                <td class="text-center"><p id="likel">Like:' .$sql1.'</p><p>Dislike:' .$sql2.' </p></td></tr>
+                <td class="text-center"><p><span>Like:</span><span id="like-count-'.$da.'">' .$sql1.'</span></p><p name="p2" id="dlike">Dislike:' .$sql2.' </p></td></tr>
                
                 '
                 

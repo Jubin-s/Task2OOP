@@ -20,10 +20,11 @@ class FileController
         if ($result->num_rows > 0)  
         {
             $result1=mysqli_query($this->conn,"select count(Likes) as cnt from table_opinion where Likes='1' and Iid='$id'"); 
-            $data=mysqli_fetch_array($result1);
-            
-            echo'<p id="likel">Like:'. $data['cnt'].'</p>';
+            while($data=mysqli_fetch_array($result1))
+            {
+            echo $data['cnt'];
             //header("Location:blog.php");
+            }
         }
         
         else
@@ -35,9 +36,11 @@ class FileController
             if($result)
             {
                 $result1=mysqli_query($this->conn,"select count(Likes) as cnt from table_opinion where Likes='1' and Iid='$id'"); 
-                $data=mysqli_fetch_array($result1);
-                echo'<p id="likel">Like:'. $data['cnt'].'</p>';
-                //header("Location:blog.php");
+                while($data=mysqli_fetch_array($result1))
+            {
+            echo $data['cnt'];
+            //header("Location:blog.php");
+            }
             }
             else
             {
@@ -52,7 +55,12 @@ class FileController
         
         if ($result->num_rows > 0) 
         {
-            header("Location:blog.php");
+            $result1=mysqli_query($this->conn,"select count(Dislike) as cnt from table_opinion where Dislike='1' and Iid='$id'"); 
+            while($data=mysqli_fetch_array($result1))
+            {
+            echo'<p id="dlike">Dislike:'. $data['cnt'].'</p>';
+            //header("Location:blog.php");
+            }
         }
         else
         {
@@ -63,7 +71,12 @@ class FileController
             if($result)
             {
                 
-                header("Location:blog.php");
+                $result1=mysqli_query($this->conn,"select count(Dislike) as cnt from table_opinion where Dislike='1' and Iid='$id'"); 
+                while($data=mysqli_fetch_array($result1))
+                {
+                echo'<p id="dlike">Dislike:'. $data['cnt'].'</p>';
+                //header("Location:blog.php");
+                }
             }
             else
             {
@@ -117,7 +130,7 @@ class FileController
 
     public function uploadData($name,$brief,$t,$photo)
     {
-        $result=mysqli_query($this->conn,"insert into table_data(Title,Brief,Image)values('$name','$brief','$photo')");
+        $result=mysqli_query($this->conn,"insert into table_data(Title,Brief,Image,Status)values('$name','$brief','$photo',0)");
         if($result)
         {
             if(move_uploaded_file($_FILES["file"]["tmp_name"],$t))
@@ -126,7 +139,7 @@ class FileController
             }
             else
             {
-                echo"error";
+                echo "error";
             }
         }
     }
