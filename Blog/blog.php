@@ -95,29 +95,23 @@ if(isset($_SESSION['name']))
 
     });   
     
-    // $('[name=like2]').on('click',function()
-    // {
-    //     var id1= $('[name="p2"]').attr("id");
-    //     var id = this.id;
-    //     $.ajax(
-    //         {
-    //             url: "dislike.php",
-    //             type: "POST",
-    //             data: {
-    //                 id:id
-    //             },
-    //             cache: false,
-    //             success: function(response)
-    //             {
-    //                 //alert(id);
-    //                 $("#dlike").html(response);
-    //                 //location.reload(true);
-    //             }
-    //         }
-    //     );
-    // }
-    // );
-   
+   $('.like2').on('click',function()
+   {
+       var element=$(this);
+       var id=element.data("id");
+       $.ajax({
+           url: "dislike.php",
+           type: "POST",
+           data : {
+               id:id
+           },
+           cache: false,
+           success: function(response)
+           {
+               $("#dlike-count-" + id).html(response);
+           }
+       });
+   });
 /*$(window).load(function()
 {
     $.ajax(
@@ -175,9 +169,9 @@ if(isset($_SESSION['name']))
                 </tr>
                 
                <tr>
-                <td class="iter"><img src="images/like2.png" class="like1" width="50" height="50" value="Like" data-id="'.$da.'"  ><img src="images/dislike2.png" name="like2" width="50" height="50" value="Dislike" id="'.$row['Iid'].'"  ></td></tr>
+                <td class="iter"><img src="images/like2.png" class="like1" width="50" height="50" value="Like" data-id="'.$da.'"  ><img src="images/dislike2.png" class="like2" width="50" height="50" value="Disike" data-id="'.$da.'"  ></td></tr>
                 <tr>
-                <td class="text-center"><p><span>Like:</span><span id="like-count-'.$da.'">' .$sql1.'</span></p><p name="p2" id="dlike">Dislike:' .$sql2.' </p></td></tr>
+                <td class="text-center"><p><span>Like:</span><span id="like-count-'.$da.'">' .$sql1.'</span></p><p><span>Dislike:</span><span id="dlike-count-'.$da.'">' .$sql2.'</span></p></td></tr>
                
                 '
                 

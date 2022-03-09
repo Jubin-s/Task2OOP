@@ -58,7 +58,7 @@ class FileController
             $result1=mysqli_query($this->conn,"select count(Dislike) as cnt from table_opinion where Dislike='1' and Iid='$id'"); 
             while($data=mysqli_fetch_array($result1))
             {
-            echo'<p id="dlike">Dislike:'. $data['cnt'].'</p>';
+            echo $data['cnt'];
             //header("Location:blog.php");
             }
         }
@@ -74,7 +74,7 @@ class FileController
                 $result1=mysqli_query($this->conn,"select count(Dislike) as cnt from table_opinion where Dislike='1' and Iid='$id'"); 
                 while($data=mysqli_fetch_array($result1))
                 {
-                echo'<p id="dlike">Dislike:'. $data['cnt'].'</p>';
+                echo $data['cnt'];
                 //header("Location:blog.php");
                 }
             }
