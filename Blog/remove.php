@@ -57,7 +57,8 @@ if(isset($_SESSION['name']))
                      
             <a href="dest.php" >Logout</a>
             <a href="blog.php" >Blog</a>
-            <a href="remove.php" class="active">Remove</a>
+            <a href="activate.php" >Activate</a>
+            <a href="remove.php" class="active">Deactivate</a>
             <a href="upload.php" >Home</a>
         </div>
     <body style="background-image: url(images/img4.jpg);background-size: 1600px;">
@@ -65,7 +66,7 @@ if(isset($_SESSION['name']))
         <form method="post" action="removedata.php">
         <center><table border="1" cellspacing="5px" cellpadding="5">
             <tr>
-            <th colspan="2">Remove Post</th>
+            <th colspan="2">Deactivate Post</th>
             </tr>
             <tr>
             <th>Post Name</th><td>

@@ -23,7 +23,6 @@ class FileController
             while($data=mysqli_fetch_array($result1))
             {
             echo $data['cnt'];
-            //header("Location:blog.php");
             }
         }
         
@@ -39,7 +38,6 @@ class FileController
                 while($data=mysqli_fetch_array($result1))
             {
             echo $data['cnt'];
-            //header("Location:blog.php");
             }
             }
             else
@@ -59,7 +57,6 @@ class FileController
             while($data=mysqli_fetch_array($result1))
             {
             echo $data['cnt'];
-            //header("Location:blog.php");
             }
         }
         else
@@ -75,7 +72,6 @@ class FileController
                 while($data=mysqli_fetch_array($result1))
                 {
                 echo $data['cnt'];
-                //header("Location:blog.php");
                 }
             }
             else
@@ -182,6 +178,23 @@ class FileController
         else
         {
             die("error");
+        }
+    }
+    public function activateInfo()
+    {
+        $result=mysqli_query($this->conn,"select Title from table_data where Status='1' order by Iid desc");
+        return $result;
+    }
+    public function activateData($name)
+    {
+        $result=mysqli_query($this->conn,"update table_data set Status='0' where Title='$name'");
+        if($result)
+        {
+            header("location:activate.php");
+        }
+        else
+        {
+            die($result);
         }
     }
 }

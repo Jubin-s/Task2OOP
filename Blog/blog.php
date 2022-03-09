@@ -53,26 +53,10 @@ if(isset($_SESSION['name']))
     window.onpopstate = function () { history.go(1); };
 	</script>
     <script>
-	function update(id)
-		{
-			var frm = document.getElementById("frmm")
-			frm.setAttribute("action","like.php?id="+id);
-			frm.submit();
-		}
-	function update1(id)
-		{
-			var frm = document.getElementById("frmm")
-			frm.setAttribute("action","dislike.php?id="+id);
-			frm.submit();
-		}
-
-	</script>
-    <script>
     $(document).ready(function() {
         
         $('.like1').on('click', function() {
-        var element = $(this);
-        var id= element.data("id");
+        var id= $(this).data("id");
         $.ajax({
         url: "like.php",
         type: "POST",
@@ -82,14 +66,8 @@ if(isset($_SESSION['name']))
 
         cache: false,
         success: function(response)
-        {
-            //onSuccess(response)
-            
+        {   
             $("#like-count-" + id).html(response);
-            //location.reload(true);
-       
-           
-        
         }
         });
 
@@ -97,8 +75,7 @@ if(isset($_SESSION['name']))
     
    $('.like2').on('click',function()
    {
-       var element=$(this);
-       var id=element.data("id");
+       var id=$(this).data("id");
        $.ajax({
            url: "dislike.php",
            type: "POST",
@@ -112,22 +89,6 @@ if(isset($_SESSION['name']))
            }
        });
    });
-/*$(window).load(function()
-{
-    $.ajax(
-        {
-            url: "loader.php",
-            type: "POST",
-            data:{
-                id: id
-            },
-            cache: false,
-            success: function(result){
-            $("#likel").html(result);
-            }
-        }
-    )
-})*/
 });
     </script>
     </head>

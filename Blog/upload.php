@@ -56,7 +56,8 @@ if(isset($_SESSION['name']))
                      
             <a href="dest.php" >Logout</a>
             <a href="blog.php" >Blog</a>
-            <a href="remove.php" >Remove</a>
+            <a href="activate.php" >Activate</a>
+            <a href="remove.php" >Deactivate</a>
             <a href="upload.php" class="active">Home</a>
         </div>
     <body style="background-image: url(images/img4.jpg);background-size: 1600px;">
